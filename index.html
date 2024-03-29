@@ -17,18 +17,18 @@
         const token = activationUrl.split('#')[1];
         $('#message').text('token:', token);
         // Send verification request to server
-        $.ajax({
-            url: 'http://localhost:8000/api/account-activation',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ token: token }),
-            success: function (response) {
-                $('#message').text('Account activation successful:', response.message);
-            },
-            error: function (xhr, status, error) {
-                $('#message').text('Error activating account:', xhr.responseJSON.error);
-            }
-        });
+        // $.ajax({
+        //     url: 'http://localhost:8000/api/account-activation',
+        //     type: 'POST',
+        //     contentType: 'application/json',
+        //     data: JSON.stringify({ token: token }),
+        //     success: function (response) {
+        //         $('#message').text('Account activation successful:', response.message);
+        //     },
+        //     error: function (xhr, status, error) {
+        //         $('#message').text('Error activating account:', xhr.responseJSON.error);
+        //     }
+        // });
     </script>
     <div id="error-message"></div>
 </body>
