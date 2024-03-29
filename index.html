@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Activation</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Extract token from URL
+            const activationUrl = window.location.href;
+            const token = activationUrl.substring(activationUrl.lastIndexOf('/') + 1);
+
+            // Send verification request to server
+            $.ajax({
+                url: 'http://localhost:8000/api/account-activation',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ token: token }),
+                success: function(response) {
+                    // Handle successful activation
+                    console.log('Account activation successful:', response.message);
+                    // Optionally, redirect to a success page
+                    window.location.href = 'success.html';
+                },
+                error: function(xhr, status, error) {
+                    // Handle activation error
+                    console.error('Error activating account:', xhr.responseJSON.error);
+                    // Optionally, display an error message
+                    $('#error-message').text(xhr.responseJSON.error);
+                }
+            });
+        });
+    </script>
+    <div id="error-message"></div>
+</body>
+</html>
