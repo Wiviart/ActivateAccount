@@ -12,9 +12,7 @@
     <script>
         // Extract token from URL
         const activationUrl = window.location.href;
-        // document.write('activationUrl:', activationUrl, '\n');
         const token = activationUrl.split('#')[1];
-        // document.write('token:', token, '\n');
         // Send verification request to server
         $.ajax({
             url: 'http://localhost:8000/api/account-activation',
@@ -22,10 +20,11 @@
             contentType: 'application/json',
             data: JSON.stringify({ token: token }),
             success: function (response) {
-                document.write('Account activation successful:', response.message);
+                document.write(response.message);
+                // window.location.href = 'success.html';
             },
             error: function (xhr, status, error) {
-                document.write('Error activating account:', xhr.responseJSON.error);
+                document.write(xhr.responseJSON.error);
             }
         });
     </script>
