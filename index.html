@@ -10,12 +10,12 @@
 <body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        console.log("Script is running...");
+        $('#message').text("Script is running...");
         // Extract token from URL
         const activationUrl = window.location.href;
-        console.log('activationUrl:', activationUrl);
+        $('#message').text('activationUrl:', activationUrl);
         const token = activationUrl.split('#')[1];
-        console.log('token:', token);
+        $('#message').text('token:', token);
         // Send verification request to server
         $.ajax({
             url: 'http://localhost:8000/api/account-activation',
@@ -23,15 +23,10 @@
             contentType: 'application/json',
             data: JSON.stringify({ token: token }),
             success: function (response) {
-                // Handle successful activation
-                console.log('Account activation successful:', response.message);
-                // Optionally, redirect to a success page
+                $('#message').text('Account activation successful:', response.message);
             },
             error: function (xhr, status, error) {
-                // Handle activation error
-                console.error('Error activating account:', xhr.responseJSON.error);
-                // Optionally, display an error message
-                // $('#error-message').text(xhr.responseJSON.error);
+                $('#message').text('Error activating account:', xhr.responseJSON.error);
             }
         });
     </script>
