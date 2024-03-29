@@ -13,14 +13,13 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        document.write("Script is running...");
-        document.write("Script is running...");
+        document.write("Script is running...\n");
 
         // Extract token from URL
         const activationUrl = window.location.href;
-        document.write('activationUrl:', activationUrl);
+        document.write('activationUrl:', activationUrl, '\n');
         const token = activationUrl.split('#')[1];
-        document.write('token:', token);
+        document.write('token:', token, '\n');
         // Send verification request to server
         $.ajax({
             //     url: 'http://localhost:8000/api/account-activation',
