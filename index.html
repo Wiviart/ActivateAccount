@@ -8,12 +8,12 @@
 </head>
 
 <body>
-    <h1>Account Activation</h1>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
             // Extract token from URL
             const activationUrl = window.location.href;
+            console.log('activationUrl:', activationUrl);
             const token = activationUrl.split('#')[1];
             console.log('token:', token);
             // Send verification request to server
