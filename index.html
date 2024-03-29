@@ -8,30 +8,25 @@
 </head>
 
 <body>
-    <div id="message"></div>
-    <div id="error-message"></div>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        document.write("Script is running...\n");
-
         // Extract token from URL
         const activationUrl = window.location.href;
-        document.write('activationUrl:', activationUrl, '\n');
+        // document.write('activationUrl:', activationUrl, '\n');
         const token = activationUrl.split('#')[1];
-        document.write('token:', token, '\n');
+        // document.write('token:', token, '\n');
         // Send verification request to server
         $.ajax({
-            //     url: 'http://localhost:8000/api/account-activation',
-            //     type: 'POST',
-            //     contentType: 'application/json',
-            //     data: JSON.stringify({ token: token }),
-            //     success: function (response) {
-            //         $('#message').text('Account activation successful:', response.message);
-            //     },
-            //     error: function (xhr, status, error) {
-            //         $('#error-message').text('Error activating account:', xhr.responseJSON.error);
-            //     }
+            url: 'http://localhost:8000/api/account-activation',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ token: token }),
+            success: function (response) {
+                document.write('Account activation successful:', response.message);
+            },
+            error: function (xhr, status, error) {
+                document.write('Error activating account:', xhr.responseJSON.error);
+            }
         });
     </script>
 </body>
