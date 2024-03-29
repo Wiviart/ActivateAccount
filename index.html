@@ -11,7 +11,7 @@
         $(document).ready(function() {
             // Extract token from URL
             const activationUrl = window.location.href;
-            const token = activationUrl.substring(activationUrl.lastIndexOf('/') + 1);
+            const token = activationUrl.split('#')[1];
 
             // Send verification request to server
             $.ajax({
