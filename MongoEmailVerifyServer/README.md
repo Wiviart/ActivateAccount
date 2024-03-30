@@ -1,3 +1,17 @@
+First step is create a .env file with follow:
+```
+PORT=8000
+DATABASE=<mongodb connect csv>
+
+JWT_ACCOUNT_ACTIVATION=accountactivation12345
+clientUrl=<url>
+
+smtpAddress = smtp.gmail.com
+portNumber = 587
+senderEmail = <email>
+password = <password>
+```
+
 Build docker image
 ```
 docker build -t <image name> .
